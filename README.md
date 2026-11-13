@@ -74,7 +74,10 @@ python generate.py --weights checkpoints/generator.pth --n 64 --seed 7
 
 ## What I learned / challenges
 
-_Write 3-4 honest points, e.g. why discriminator and generator losses oscillate rather than converge, what label smoothing changed, how sample quality changed over epochs, limits of 64×64 DCGAN versus modern models._
+1. Losses oscillate instead of converging, because the generator and discriminator are always adjusting to each other. A flat curve doesn’t mean training is finished.
+2. One-sided label smoothing (real label 0.9) kept the discriminator from becoming too confident, which helped training stay stable.
+3. The 64×64 output is recognizable but soft and warped, showing the limits of this DCGAN compared with modern models.
+4. The Kaggle session reset once, so the workflow now runs training in a saved version and downloads the output right away.
 
 ## Possible extensions
 
